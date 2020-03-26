@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriaTabelaCliente extends Migration
+class CriarTabelasUsuarios extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CriaTabelaCliente extends Migration
      */
     public function up()
     {
-        Schema::create('Clientes', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
+        Schema::create('Usuarios', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nome');
-            $table->string('email');
-            $table->string('endereco');
-            $table->bigInteger('telefone');
+            $table->string('email')->unique();
+            $table->string('senha');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CriaTabelaCliente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Clientes');
+        Schema::dropIfExists('Usuarios');
     }
 }

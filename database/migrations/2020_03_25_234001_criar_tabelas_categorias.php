@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CriaTabelaProdutos extends Migration
+class CriarTabelasCategorias extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CriaTabelaProdutos extends Migration
      */
     public function up()
     {
-        Schema::create('Produtos', function (Blueprint $table) {
+        Schema::create('Categorias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome');
-            $table->text('descricao');
-            $table->double('preco', 10, 2);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CriaTabelaProdutos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Produtos');
+        Schema::dropIfExists('Categorias');
     }
 }
