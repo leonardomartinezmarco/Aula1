@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Aula de MVC
+                    Laravel-MVC
                 </div>
 
                 <div class="links">

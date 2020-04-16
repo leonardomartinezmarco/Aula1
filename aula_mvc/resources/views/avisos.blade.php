@@ -1,28 +1,22 @@
-@extends('layouts.externo')
 
-@section('title', 'Quadro de avisos da empresa')
+    @extends('layouts.externo')
+    @section('title', 'Quadro de avisos da Empresa')
 
-@section('sidebar')
-    @parent
-        <p>-- Barra superior adicionada do layont pai/mãe --</p>
-@endsection
+    @section('sidebar')
+        @parent
+        <p> ^^ Barra superior adicionada da pasta de Layous </p>
+    @endsection
+    @section('content')
+        <p> Quadro de avisos da empresa </p>
+        <p> Olá, {{ $nome }}, seja bem-vindo! </p>
+    @endsection
 
-@section('content')
-    <p>Quadro de avisos da empresa</p><br>
-    <p>Olá {{$nome}}, Veja abaixo os avisos de hoje:</p>
+    @if ($mostrar)
+        Mostrando aviso
+        @else
+        Escondendo aviso
+    @endif
 
-@if ($mostrar)
-    Mostrar aviso
-@else 
-    Escondendo aviso
-@endif
-
-@foreach($avisos as $aviso)
-    <p>Aviso {{ $aviso['id'] }}: {{ $aviso['texto']}}</p>
-@endforeach
-
-
-
-@endsection 
-
-
+    @foreach ($avisos as $aviso)
+        <p> Aviso {{ $aviso['id'] }}:{{ $aviso['texto']}} </p>
+    @endforeach
