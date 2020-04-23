@@ -21,6 +21,11 @@ Route::group(['prefix' => 'produtos'], function () {
 
 });
 
+Route::group(['middleware' => ['auth']],function(){
+    Route::resource('users','UserController');
+    Route::resource('roles','RoleController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
