@@ -81,6 +81,7 @@
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item"><a href="{{ route('users.index') }}">Usuários</a></li>
+                        <li class="list-group-item"><a href="{{ route('roles.index') }}"> Perfil da Conta </a></li>
                         <li class="list-group-item"><a href="{{ route('clientes') }}">Clientes</a></li>
                         <li class="list-group-item"><a href="{{ route('produtos') }}">Produtos</a></li>
                     </ul>

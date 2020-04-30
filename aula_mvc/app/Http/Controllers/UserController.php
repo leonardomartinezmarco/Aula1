@@ -12,8 +12,8 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $data = User::orderBy('id','desc')->paginate(5);
-        return view('users.index', compact('data'))->with('i', ($request->input('page',1)-1)*5);
+        $data = User::orderBy('id','DESC')->paginate(10);
+        return view('users.index', compact('data'))->with('i',($request->input('page',1)-1)*10);
     }
 
     public function create()
@@ -49,16 +49,25 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required']);
+        $this->validate($request, ['name' => 'required','email' => 'required|email|unique:users,email,'.$id,'password' => 'same:confirm-password','roles' => 'required']);
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password']=Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));
+        }
+
+        $user = User::find($id);
+        $user->update($input);
+        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        $user->assignRole($request->input('roles'));
+        return redirect()->route('users.index')->with('success','Usuário atualizado com sucesso');
     }
 
     public function destroy($id)
     {
-        //
+        User::find($id)->delete();
+        return redirect()->route('users.index')->with('success','Usuário removido com sucesso');
     }
 
 
