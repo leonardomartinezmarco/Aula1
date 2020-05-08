@@ -23,6 +23,7 @@ Route::group(['prefix' => 'produtos'], function () {
 Route::group(['middleware' => ['auth']],function(){
     Route::resource('users','UserController');
     Route::resource('roles','RoleController');
+    Route::resource('clientes', 'ClientController');
 });
 
 Auth::routes();
