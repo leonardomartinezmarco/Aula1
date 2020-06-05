@@ -30,7 +30,7 @@ class VendedoresController extends Controller
     }
 
     public function edit($id){
-        
+        //
     }
 
     public function update(Request $request, $id){
@@ -57,4 +57,40 @@ class VendedoresController extends Controller
 
         return json_encode($retorno);
     }
+    
+    public function checkVendedor(int $idVendedor): bool{
+        $vendedores = [
+            1 => 'Leonardo',
+            2 => 'Paulo',
+            3 => 'Lucas',
+            4 => 'Luiza'
+        ];
+        return array_key_exists($idVendedor, $vendedores);
+    }
+
+    public function getVendedor(int $idVendedor): ?string{
+        $vendedores = [
+            1 => 'Leonardo',
+            2 => 'Amanda',
+            3 => 'Paulo',
+            4 => 'Regina'
+        ];
+        return $vendedores[$idVendedor] ?? null;
+    }
+
+    public function getJSON(): string{
+        return json_encode(['nome' => 'luiz']);
+    }
+
+    // Exercícios de Teste
+    
+    public function welcomeMessage(): string {
+        return 'Bem vindo';
+    }
+
+    public function getAnoAtual(): int {
+        return 2020;
+    }
 }
+
+
