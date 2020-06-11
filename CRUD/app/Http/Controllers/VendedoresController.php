@@ -43,7 +43,6 @@ class VendedoresController extends Controller
         }else{
             $retorno = [$id=> 'Não existe'];
         }
-
         return json_encode($retorno);
     }
 
@@ -54,7 +53,6 @@ class VendedoresController extends Controller
         }else{
             $retorno = [$id => 'Não existe'];
         }
-
         return json_encode($retorno);
     }
     
